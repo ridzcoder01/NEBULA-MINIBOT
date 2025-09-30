@@ -1,0 +1,25 @@
+# netlify.toml
+
+[build]
+  command = "npm run build"   # or "yarn build"
+  publish = "dist"            # or "build" depending on your framework
+  base = ""                   # optional, if project is in subfolder
+
+[dev]
+  command = "npm run dev"
+  port = 8888
+  publish = "dist"
+
+# Redirects
+[[redirects]]
+  from = "/*"
+  to = "/index.js"
+  status = 200
+
+# Headers (optional, for caching or security)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer-when-downgrade"
